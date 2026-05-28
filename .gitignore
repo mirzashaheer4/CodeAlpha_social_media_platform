@@ -1,3 +1,74 @@
+# Dependency directories
 node_modules/
+jspm_packages/
+web_stage/
+
+# Environment files and API keys (CRITICAL SECURITY)
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.local
+.private.env*
+
+# Logs and debug files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data / Database dumps
+.mongodb/
+*.db
+*.sqlite
+*.sqlite3
+dump.rdb
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS metadata files (CRITICAL SECURITY / CLEANLINESS)
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE / Editor configurations
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+.sublime-project
+.sublime-workspace
+
+# Build and coverage directories
+dist/
+build/
+out/
+.next/
+.nuxt/
+coverage/
+.nyc_output/
+.eslintcache
+
+# Local configuration files that shouldn't be shared
+.npmrc
+.yarnrc
