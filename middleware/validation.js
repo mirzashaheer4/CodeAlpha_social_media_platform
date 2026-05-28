@@ -99,9 +99,10 @@ module.exports = {
     }
 
     if (avatarUrl !== undefined && avatarUrl.trim().length > 0) {
-      // Basic URL verification
-      const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
-      if (!urlRegex.test(avatarUrl)) {
+      // URL verification that supports query strings, ports, fragments, etc.
+      try {
+        new URL(avatarUrl);
+      } catch (_) {
         fields.push({ field: 'avatarUrl', message: 'Provided avatarUrl must be a valid URL format.' });
       }
     }

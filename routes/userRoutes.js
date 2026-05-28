@@ -58,11 +58,18 @@ router.get('/:username', async (req, res, next) => {
       .populate('authorId', 'username avatarUrl')
       .sort({ createdAt: -1 });
 
+    // Format posts safely for frontend (authorId -> author)
+    const formattedPosts = posts.map(post => {
+      const obj = post.toObject();
+      obj.author = obj.authorId;
+      return obj;
+    });
+
     res.status(200).json({
       user,
       followerCount,
       followingCount,
-      posts
+      posts: formattedPosts
     });
   } catch (err) {
     next(err);
