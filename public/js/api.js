@@ -9,12 +9,18 @@
 const API_BASE = (function() {
   const host = window.location.hostname;
   const port = window.location.port;
-  // If running on a dev static server (port 3000), use backend origin
-  if ((host === '127.0.0.1' || host === 'localhost') && port && port !== '5000') {
-    return `http://${host}:5000/api`;
+  
+  // Local development
+  if (host === '127.0.0.1' || host === 'localhost') {
+    if (port && port !== '5000') {
+      return `http://${host}:5000/api`;
+    }
+    return '/api'; // same origin locally
   }
-  // Default to relative paths when same origin
-  return '/api';
+  
+  // Production Split Deployment (Vercel Frontend -> Render Backend)
+  // CHANGE THIS to your actual Render URL (e.g., https://your-app.onrender.com/api)
+  return 'https://nocturne-api.onrender.com/api';
 })();
 
 // Helper to standardise fetch calls and handle errors

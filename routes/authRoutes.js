@@ -8,10 +8,12 @@ const { validateRegister, validateLogin } = require('../middleware/validation');
 
 // Helper to set httpOnly session cookie
 const setTokenCookie = (res, token) => {
+  const isProduction = process.env.NODE_ENV === 'production';
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: isProduction,
+    // Cross-origin cookies (Vercel -> Render) require SameSite=None in production
+    sameSite: isProduction ? 'none' : 'strict',
     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
   });
 };
@@ -129,10 +131,11 @@ router.post('/login', validateLogin, async (req, res, next) => {
 // @desc    Log user out & clear token cookie
 // @access  Public
 router.post('/logout', (req, res) => {
+  const isProduction = process.env.NODE_ENV === 'production';
   res.clearCookie('token', {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict'
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'strict'
   });
   res.status(200).json({ message: 'Logged out successfully' });
 });
