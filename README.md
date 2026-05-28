@@ -15,6 +15,8 @@
   Nocturne is an immersive, dark-themed micro-social media platform built from the ground up. It merges a highly refined glassmorphic design system with modern security paradigms.
 </p>
 
+### **[🌐 Live Demo Available Here](https://code-alpha-social-media-platform-orpin.vercel.app/)**
+
 [✨ Try Seeding Data](#-onboarding--database-seeding) • [🧭 API Route Explorer](#-api-endpoint-reference) • [🛠️ Setup & Dev](#-installation--setup)
 
 ---
