@@ -22,9 +22,10 @@ app.use(helmet({
 }));
 
 // 2. Strict CORS restrictions with credentials support for HttpOnly cookies
-// Allowlist CORS origins for development (accept both localhost and 127.0.0.1 on port 3000)
+// Allowlist CORS origins (sanitize trailing slashes from environment variable)
+const clientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, '') : null;
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  clientUrl,
   'http://127.0.0.1:3000',
   'http://localhost:3000'
 ].filter(Boolean);

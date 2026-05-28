@@ -20,7 +20,7 @@ const API_BASE = (function() {
   
   // Production Split Deployment (Vercel Frontend -> Render Backend)
   // CHANGE THIS to your actual Render URL (e.g., https://your-app.onrender.com/api)
-  return 'https://codealpha-social-media-platform-kab7.onrender.com';
+  return 'https://codealpha-social-media-platform-kab7.onrender.com/api';
 })();
 
 // Helper to standardise fetch calls and handle errors
